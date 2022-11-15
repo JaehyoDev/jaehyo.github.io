@@ -166,6 +166,7 @@ p {
 }
 
 .section__container {
+  margin: auto;
   max-width: 1200px;
 }
 
@@ -268,7 +269,6 @@ p {
 }
 
 .skill__value {
-  width: 100%;
   height: 3px;
   background-color: var(--color-orange);
 }
@@ -436,10 +436,6 @@ p {
 .contact__email,
 .contact__rights {
   color: var(--color-white);
-}
-
-.contact__title {
-  margin: 32px 0;
 }
 
 .contact__links {
