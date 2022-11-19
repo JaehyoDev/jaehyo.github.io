@@ -86,6 +86,7 @@ workBtnContainer.addEventListener("click", (e) => {
     projectContainer.classList.remove("anim-out");
   }, 300);
 
+  // 1번 2번 3번 방법은 모두 같다.
   // // 1번 방법
   // projects.forEach((project) => {
   //   console.log(project);
