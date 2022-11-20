@@ -80,7 +80,9 @@ workBtnContainer.addEventListener("click", (e) => {
 
   // Remove selection from the previsous item and select the new one.about__majors
   const active = document.querySelector(".category__btn.selected");
-  active.classList.remove("selected");
+  if (active != null) {
+    active.classList.remove("selected");
+  }
   // 번호가 담긴 스팬이 클릭될 수 있기에 타겟 확인
   const target =
     e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;

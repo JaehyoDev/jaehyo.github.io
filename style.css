@@ -133,13 +133,9 @@ p {
 그러면 원래부터 메뉴아이템에 보더를 만들어놓고 마우스가
 호버되면 보더만 보이게 하자.
 그러면 보더는 컨텐츠 바깥에 생기는 걸까?*/
-.navbar__menu__item.active {
-  border: 1px solid var(--color-white);
-}
 
 .navbar__menu__item:hover {
   border-color: var(--color-white);
-  border-radius: var(--size-border-radius);
   background-color: var(--color-dark-pink);
 }
 
@@ -180,6 +176,10 @@ p {
   padding: 8px 12px;
   border: 2px solid var(--color-white);
   border-radius: var(--size-border-radius);
+}
+
+.home__contact:hover {
+  background-color: var(--color-orange);
 }
 
 /* Section common */
@@ -320,6 +320,7 @@ p {
   border-radius: var(--size-border-radius);
   font-size: var(--font-regular);
   padding: 8px 48px;
+  position: relative;
 }
 
 .category__btn.selected,
@@ -331,6 +332,7 @@ p {
 .category__btn.selected .category__count,
 .category__btn:hover .category__count {
   opacity: 1;
+  top: 6px;
 }
 
 .category__count {
@@ -341,8 +343,9 @@ p {
   height: 24px;
   line-height: 24px;
   display: inline-block;
-  position: relative;
-  left: 8px;
+  position: absolute;
+  top: -20px;
+  right: 16px;
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
 }
@@ -522,8 +525,20 @@ p {
 
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+
   .navbar__toggle-btn {
     display: block;
+    top: 18px;
+    right: 16px;
+    font-size: var(--font-medium);
   }
 
   #navbar {
@@ -543,24 +558,72 @@ p {
     display: block;
   }
 
+  .section {
+    padding: 16px;
+    padding-top: 50px;
+  }
+
   .about__majors {
     flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 0px;
   }
 
   .major {
-    margin-bottom: 38px;
+    margin-bottom: 30px;
   }
 
   .skillset {
     flex-direction: column;
   }
 
+  .category__btn {
+    margin: 4px 0;
+    width: 100%;
+  }
+
   .project {
     flex-grow: 1;
   }
 
+  .testimonials {
+    margin: 20px;
+  }
+
+  .testimonial {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
   .testimonial__avatar {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 8px;
+  }
+
+  .testimonial__speech-bubble {
+    order: 1;
+  }
+
+  .testimonial__speech-bubble:nth-child(odd),
+  .testimonial__speech-bubble:nth-child(even) {
+    margin: 0px;
+  }
+
+  /* 미디어쿼리 스피치버블에 마진 적용함
+  하지만 적용 안됨
+  그이유 글로벌에 스피치버블-nth-child에서 마진 적용함
+  차일드 이 부분이 더 상세한 css라서 그런듯함
+  */
+
+  .arrow-up {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    right: 16px;
+    bottom: 16px;
   }
 }
