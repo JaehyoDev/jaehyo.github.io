@@ -64,12 +64,21 @@ const workBtnContainer = document.querySelector(".work__categories");
 const projectContainer = document.querySelector(".work__projects");
 const projects = document.querySelectorAll(".project");
 workBtnContainer.addEventListener("click", (e) => {
-  //const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-  const filter = e.target.dataset.filter; // 이렇게 필터하면 버튼안에 스팬이 클릭되면 감지되지 않음 이상함...
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  //const filter = e.target.dataset.filter; // 이렇게 필터하면 버튼안에 스팬이 클릭되면 감지되지 않음 이상함...
   if (filter == null) {
     return;
   }
   //console.log(filter);
+
+  // Remove selection from the previsous item and select the new one.about__majors
+  const active = document.querySelector(".category__btn.selected");
+  active.classList.remove("selected");
+  // 번호가 담긴 스팬이 클릭될 수 있기에 타겟 확인
+  const target =
+    e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
+  e.target.classList.add("selected");
+
   projectContainer.classList.add("anim-out");
 
   //setTimeout은 브라우저의 api, 0.3초 후 발동
@@ -77,7 +86,7 @@ workBtnContainer.addEventListener("click", (e) => {
     projects.forEach((project) => {
       //console.log(project.dataset.type);
 
-      if (filter == "*" || filter == project.dataset.type) {
+      if (filter === "*" || filter === project.dataset.type) {
         project.classList.remove("invisible");
       } else {
         project.classList.add("invisible");
